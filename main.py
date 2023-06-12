@@ -90,5 +90,18 @@ def get_movie_info(movieName):
     print(info["poster"])
     return jsonify(info)
 
+@app.route('/rottenTomatoes/user/<movieName>', methods=['GET'])
+def get_user_reviews(movieName):
+    reviews = {}
+    reviews['reviews'] = getUserReviews(movieName)
+    return jsonify(reviews)
+
+@app.route('/rottenTomatoes/critic/<movieName>', methods=['GET'])
+def get_critic_reviews(movieName):
+    reviews = {}
+    reviews['reviews'] = getCriticReviews(movieName)
+    print(reviews['reviews'])
+    return jsonify(reviews)
+
 if __name__ == ("__main__"):
     app.run()
